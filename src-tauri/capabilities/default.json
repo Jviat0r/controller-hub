@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "The single main window may call engine commands and listen for snapshots.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

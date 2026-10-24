@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Controller Hub</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div id="app">
+    <p id="demo-banner" class="banner" hidden>Demo mode. The UI is running in a browser with no engine; nothing shown is a real controller.</p>
+
+    <header class="top">
+      <h1>Controller Hub</h1>
+      <span id="driver-pill" class="pill" data-status="null">Virtual pad driver: Checking…</span>
+      <span class="spacer"></span>
+      <button type="button" data-action="open-bt">Pair Bluetooth</button>
+      <button type="button" data-action="open-settings" aria-label="Settings">Settings</button>
+    </header>
+
+    <main>
+      <section id="slots" class="grid" aria-label="Player seats"></section>
+      <section id="unseated" class="unseated" hidden></section>
+    </main>
+
+    <footer id="log" class="log" aria-live="polite"></footer>
+  </div>
+
+  <dialog id="test-dialog" aria-labelledby="test-title">
+    <form method="dialog" class="dialog">
+      <header><h2 id="test-title">Test controller</h2><button type="button" data-action="close-test" aria-label="Close">Close</button></header>
+      <p id="test-gone" class="banner" hidden>This controller has disconnected. Reconnect it, then open the test again.</p>
+      <p id="test-slot" class="muted"></p>
+      <p id="test-verdict" class="verdict" aria-live="polite"></p>
+
+      <div id="test-cols" class="tester-cols"></div>
+
+      <h3>Stick drift</h3>
+      <p class="muted">Let go of both sticks and wait a moment. A stick that reads past the deadzone on its own will move a game on its own.</p>
+      <ul id="test-drift" class="list"></ul>
+
+      <h3>Button check</h3>
+      <p class="muted">Press every button once. Each one ticks off as it is seen, on both sides.</p>
+      <div id="test-coverage"></div>
+
+      <div class="row"><button type="button" data-action="reset-test">Start over</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="bt-dialog" aria-labelledby="bt-title">
+    <form method="dialog" class="dialog">
+      <header><h2 id="bt-title">Pair a Bluetooth controller</h2><button type="button" data-action="close" aria-label="Close">Close</button></header>
+      <fieldset class="tabs">
+        <legend>Which controller?</legend>
+        <label><input type="radio" name="bt-kind" value="dualsense" data-action="bt-kind" checked> DualSense (PS5)</label>
+        <label><input type="radio" name="bt-kind" value="ds4" data-action="bt-kind"> DualShock 4 (PS4)</label>
+        <label><input type="radio" name="bt-kind" value="xbox" data-action="bt-kind"> Xbox</label>
+      </fieldset>
+      <ol id="bt-steps"></ol>
+      <div class="row">
+        <button type="button" id="bt-scan" data-action="bt-scan">Scan for controllers</button>
+        <label><input type="checkbox" data-action="bt-all"> Show all devices</label>
+      </div>
+      <p id="bt-message" class="muted" aria-live="polite"></p>
+      <ul id="bt-list" class="list"></ul>
+    </form>
+  </dialog>
+
+  <dialog id="settings-dialog" aria-labelledby="settings-title">
+    <form method="dialog" class="dialog">
+      <header><h2 id="settings-title">Settings</h2><button type="button" data-action="close" aria-label="Close">Close</button></header>
+
+      <h3>Drivers</h3>
+      <ul class="list" id="driver-list"></ul>
+      <p class="muted">Xbox 360, Xbox One and Xbox Series controllers use the driver built into Windows. PlayStation controllers need ViGEmBus so games see them as an Xbox pad. HidHide is optional and stops games from seeing the PlayStation pad twice.</p>
+      <div class="row"><button type="button" data-action="recheck">Re-check drivers</button></div>
+
+      <h3>Behaviour</h3>
+      <label class="setting"><input type="checkbox" data-action="setting" data-key="hide_from_games"> Hide PlayStation pads from games (needs HidHide)</label>
+      <label class="setting">Keep a player's seat for <input type="number" min="0" max="300" step="5" data-action="setting" data-key="hold_seat_seconds"> seconds after it disconnects (0 turns this off)</label>
+      <label class="setting"><input type="checkbox" data-action="setting" data-key="start_minimized"> Start minimised to the tray</label>
+      <p class="muted">Closing the window keeps the hub running in the tray so your controllers stay connected. Use Quit in the tray menu to stop it.</p>
+    </form>
+  </dialog>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

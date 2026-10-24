@@ -1,0 +1,30 @@
+{
+  "installers": [
+    {
+      "key": "vigem",
+      "name": "ViGEmBus",
+      "version": "1.22.0",
+      "file": "ViGEmBus_1.22.0_x64_x86_arm64.exe",
+      "sha256": "89220a7865076b342892f98865f3499fb7c4cfd673159e89d352c360fd014c6a",
+      "size": 6278576,
+      "silent_args": "/exenoui /qn /norestart",
+      "required": true,
+      "license": "LICENSE-ViGEmBus.txt",
+      "source": "https://github.com/nefarius/ViGEmBus/releases/tag/v1.22.0",
+      "purpose": "Virtual Xbox 360 controller bus. Needed so PlayStation pads show up in games."
+    },
+    {
+      "key": "hidhide",
+      "name": "HidHide",
+      "version": "1.5.230",
+      "file": "HidHide_1.5.230_x64.exe",
+      "sha256": "f4bbbcb82e6258641b887c74bc81c4c5f66e4aa811808dfc304347687b7605f6",
+      "size": 8078016,
+      "silent_args": "/exenoui /qn /norestart",
+      "required": false,
+      "license": "LICENSE-HidHide.txt",
+      "source": "https://github.com/nefarius/HidHide/releases/tag/v1.5.230.0",
+      "purpose": "Hides the raw PlayStation device from games so they never see a pad twice. Optional; may need a reboot."
+    }
+  ]
+}
