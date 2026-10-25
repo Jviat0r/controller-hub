@@ -2,8 +2,6 @@
 
 A small Windows app that makes up to four PlayStation and Xbox controllers work in games, with no configuration.
 
-![Controller Hub](docs/screenshot.png)
-
 It shows one screen: four player seats, a light bar colour picker and a Bluetooth pairing helper. Think DS4Windows with most of the knobs removed.
 
 > **Status:** version 0.1.0. Everything is covered by automated tests, but no physical controller has been connected to a build yet. Treat it as ready to test, not ready to rely on.
